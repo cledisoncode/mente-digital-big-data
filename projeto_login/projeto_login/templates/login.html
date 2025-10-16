@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Usuários</title>
+    <!-- Link para o arquivo CSS usando url_for do Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <!-- Exibição de mensagens flash (sucesso/erro) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Formulário de Login -->
+        <form id="loginForm" action="{{ url_for('login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Entrar</button>
+            </div>
+        </form>
+        
+        <div class="links">
+            <a href="#" id="openCadastro">Criar uma conta</a>
+            <a href="#">Esqueci minha senha</a>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="cadastroModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCadastro">&times;</span>
+            <h2>Criar Conta</h2>
+            
+            <!-- Formulário de Cadastro -->
+            <form id="cadastroForm" action="{{ url_for('cadastro') }}" method="post">
+                <div class="form-group">
+                    <label for="newUsername">Nome de Usuário:</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="newEmail">E-mail:</label>
+                    <input type="email" id="newEmail" name="newEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Senha:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirme a Senha:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div id="cadastroError" class="error-message"></div>
+                <div class="form-group">
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Link para o arquivo JavaScript usando url_for do Flask -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

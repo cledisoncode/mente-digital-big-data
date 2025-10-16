@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Mente Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/painel.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🧠 MENTE DIGITAL</h1>
+            <div class="user-info-header">
+                <a href="{{ url_for('editar_perfil') }}" class="user-name-link" title="Editar perfil">
+                    <span class="user-name">👤 {{ nome }}</span>
+                </a>
+                <a href="{{ url_for('logout') }}" class="btn-logout-header">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="card-section" id="google-forms">
+            <div class="card-content">
+                <img src="{{ url_for('static', filename='imagens/forms-img.jpg') }}" 
+                     alt="Google Forms" 
+                     class="foto">
+                <h2>Formulário de Dados</h2>
+                <p>Acesse o formulário para coleta de informações</p>
+                <a href="https://docs.google.com/forms/d/1_moyOtMnW6dTLxWnVpqxeFteXN23ix53ybIcwh1ta3A/edit" 
+                   target="_blank" 
+                   class="link">
+                   ACESSAR FORMULÁRIO
+                </a>
+            </div>
+        </section>
+
+        <section class="card-section" id="extrair-dados">
+            <div class="card-content">
+                <img src="{{ url_for('static', filename='imagens/extracao-de-dados-img.jpeg') }}" 
+                     alt="Extração de Dados" 
+                     class="foto">
+                <h2>Análise de Dados</h2>
+                <p>Ferramenta de extração e análise de dados</p>
+                <a href="https://data-mind-iucvygfjy3nrani892bcud.streamlit.app/" 
+                   target="_blank" 
+                   class="link">
+                   EXTRAIR DADOS
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mente Digital - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

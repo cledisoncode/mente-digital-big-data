@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Mente Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>🧠 MENTE DIGITAL</h1>
+            <div class="user-info-header">
+                <span class="user-name">{{ usuario['username'] }}</span>
+                <a href="{{ url_for('painel') }}" class="btn-voltar">← Voltar ao Painel</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="perfil-container">
+            <h2>✏️ Editar Perfil</h2>
+            
+            <!-- Mensagens flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Formulário de Edição -->
+            <form id="perfilForm" action="{{ url_for('editar_perfil') }}" method="post">
+                
+                <!-- Seção: Informações Básicas -->
+                <div class="form-section">
+                    <h3>Informações Básicas</h3>
+                    
+                    <div class="form-group">
+                        <label for="username">Nome de Usuário:</label>
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               value="{{ usuario['username'] }}" 
+                               required>
+                        <span class="validation-message" id="username-validation"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               value="{{ usuario['email'] }}" 
+                               required>
+                        <span class="validation-message" id="email-validation"></span>
+                    </div>
+                </div>
+
+                <!-- Seção: Alterar Senha (Opcional) -->
+                <div class="form-section">
+                    <h3>Alterar Senha (Opcional)</h3>
+                    <p class="section-description">Deixe em branco se não quiser alterar a senha</p>
+                    
+                    <div class="form-group">
+                        <label for="senha_atual">Senha Atual:</label>
+                        <input type="password" 
+                               id="senha_atual" 
+                               name="senha_atual">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nova_senha">Nova Senha:</label>
+                        <input type="password" 
+                               id="nova_senha" 
+                               name="nova_senha">
+                        
+                        <!-- Indicador de força da senha -->
+                        <div id="password-strength-container" style="display:none;">
+                            <div class="password-strength-bar">
+                                <div id="password-strength-fill"></div>
+                            </div>
+                            <span id="password-strength-text"></span>
+                        </div>
+                        
+                        <!-- Requisitos da senha -->
+                        <ul id="password-requirements" style="display:none;">
+                            <li id="req-length">Mínimo 8 caracteres</li>
+                            <li id="req-uppercase">Pelo menos 1 letra maiúscula</li>
+                            <li id="req-lowercase">Pelo menos 1 letra minúscula</li>
+                            <li id="req-number">Pelo menos 1 número</li>
+                            <li id="req-special">Pelo menos 1 caractere especial</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirma_senha">Confirmar Nova Senha:</label>
+                        <input type="password" 
+                               id="confirma_senha" 
+                               name="confirma_senha">
+                        <span class="validation-message" id="senha-validation"></span>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-salvar">💾 Salvar Alterações</button>
+                    <a href="{{ url_for('painel') }}" class="btn-cancelar">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mente Digital - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
+</body>
+</html>

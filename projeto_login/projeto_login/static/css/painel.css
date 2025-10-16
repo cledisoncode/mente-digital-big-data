@@ -1,0 +1,389 @@
+@charset "UTF-8";
+
+/* Variáveis CSS */
+:root {
+    --cor-primaria: #667eea;
+    --cor-secundaria: #764ba2;
+    --cor-hover: #013b7e;
+    --cor-texto: #ffffff;
+    --cor-texto-escuro: #333;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body com fundo responsivo */
+body {
+    min-height: 100vh;
+    background: url(../imagens/fundo-tela-pequena.jpeg) center center no-repeat fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+    color: var(--cor-texto);
+    padding: 20px 30px;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.user-info-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Link do nome de usuário (clicável para editar perfil) */
+.user-name-link {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    color: var(--cor-texto);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.user-name-link:hover .user-name {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout-header {
+    background-color: rgba(231, 76, 60, 0.9);
+    color: var(--cor-texto);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout-header:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}
+
+/* Main Content - Mobile First (Vertical) */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 30px;
+}
+
+/* Container de mensagens flash */
+.flash-container {
+    width: 90%;
+    max-width: 600px;
+}
+
+.alert {
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    animation: slideInTop 0.4s ease;
+}
+
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+    border-left: 5px solid #e74c3c;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 2px solid #c3e6cb;
+    border-left: 5px solid #28a745;
+}
+
+/* Seções (Cards) */
+.card-section {
+    width: 90%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-content h2 {
+    color: var(--cor-texto-escuro);
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.card-content p {
+    color: #555;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Imagens */
+.foto {
+    width: 100%;
+    max-width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.foto:hover {
+    transform: scale(1.05);
+}
+
+/* Links/Botões */
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+    border-radius: 12px;
+    color: var(--cor-texto);
+    min-height: 55px;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.link:hover {
+    background: linear-gradient(135deg, var(--cor-hover) 0%, #011f47 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--cor-texto);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+}
+
+/* Responsividade para Tablets e Desktop - CARDS LADO A LADO */
+@media screen and (min-width: 768px) {
+    body {
+        background: url(../imagens/fundo-tela-grande.jpeg) center center no-repeat fixed;
+        background-size: cover;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    /* MUDANÇA PRINCIPAL: Flexbox row para cards lado a lado */
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 40px;
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    /* Flash container ocupa linha inteira */
+    .flash-container {
+        width: 100%;
+        max-width: 1000px;
+        order: -1; /* Garante que mensagens apareçam primeiro */
+    }
+
+    /* Cards ficam lado a lado com largura fixa */
+    .card-section {
+        width: auto;
+        max-width: 450px;
+        min-width: 400px;
+        flex: 0 1 450px;
+    }
+
+    .link {
+        max-width: 280px;
+        min-height: 60px;
+    }
+}
+
+/* Responsividade para Desktop Grande */
+@media screen and (min-width: 1024px) {
+    header h1 {
+        font-size: 36px;
+    }
+
+    main {
+        padding: 80px 60px;
+        gap: 50px;
+    }
+
+    .card-section {
+        max-width: 500px;
+        min-width: 420px;
+        padding: 50px 40px;
+    }
+
+    .foto {
+        max-width: 280px;
+        height: 220px;
+    }
+
+    .link {
+        max-width: 300px;
+    }
+}
+
+/* Responsividade para telas muito grandes */
+@media screen and (min-width: 1440px) {
+    .card-section {
+        max-width: 520px;
+        min-width: 450px;
+    }
+}
+
+/* Responsividade para Mobile Pequeno */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .user-info-header {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .user-name-link {
+        width: 100%;
+    }
+
+    .user-name {
+        font-size: 14px;
+        padding: 6px 12px;
+        display: block;
+        text-align: center;
+    }
+
+    .btn-logout-header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-section {
+        width: 95%;
+        padding: 30px 20px;
+    }
+
+    .card-content h2 {
+        font-size: 20px;
+    }
+
+    .foto {
+        max-width: 200px;
+        height: 160px;
+    }
+
+    .link {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}
