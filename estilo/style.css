@@ -13,14 +13,16 @@
 }
 
 body{
-    background-color: rgb(34, 186, 236)
+    background-color: rgb(34, 186, 236);
+    background: url(../imagens/fundo-tela-pequena.jpeg) center center no-repeat fixed;
+    background-size: cover;
 }
 
 header{
     text-align: center;
-    background-color: #0077ff;
+    /* background-color: #0077ff; */
     color: #ffffff;
-    padding: 10px;
+    padding: 30px;
 }
 
 main{
@@ -55,8 +57,8 @@ a {
     background-color: #0077ff;
     border-radius: 10px;
     color: #ffffff;
-    height: 100px;                  
-    width: 40vw;
+    height: 75px;                  
+    width: 30vw;
     margin-bottom: 15px;
     text-align: center;
     font-weight: bold;
